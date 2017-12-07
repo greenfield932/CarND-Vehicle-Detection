@@ -88,6 +88,8 @@ window sizes and positions provide more often good predictions.
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 Ultimately I searched 4 times with two scales and different start positions using YCrCb 3-channel HOG features.
+To optimize performance I reduced amount of data for HOG processing by introducing region of interest. The second optimization is to 
+compute HOG on the whole region and than apply sliding windows to the computed HOG data.
 
 ![alt text][image7]
 ---
