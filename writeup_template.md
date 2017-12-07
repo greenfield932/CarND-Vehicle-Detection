@@ -127,5 +127,9 @@ the result of `scipy.ndimage.measurements.label()` and the bounding boxes then o
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
-
+I faced a lot of issues with stability of linear classifier as well as combination of HOG parameters and sliding windows. It seems the algorithm is very sensitive to
+sliding windows position and sizes. Tuning one parameter may lead to better recognition but may introduce a lot of false positives. Further improvement of the project
+can be smart sliding window search, with generating additional windows with different scale and overlapping sizes at places where car was detected 
+by the initial grid of windows and using large tresholds for heat maps. It may improve detection stability as well as reduce false positives.
+The algorithm will likely fail in a complex environment, like town with multiple objects and buildings (a lot of edges).
+I believe deep learning approach with convolutional networks may provide much better results.
