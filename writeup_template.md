@@ -17,13 +17,13 @@ The goals / steps of this project are the following:
 [image5]: ./output_images/Boxes2.jpg
 [image6]: ./output_images/Boxes3.jpg
 [image7]: ./output_images/sliding_windows.jpg
-[image8]: ./output_images/0.jpg
-[image9]: ./output_images/1.jpg
-[image10]: ./output_images/2.jpg
-[image11]: ./output_images/3.jpg
-[image12]: ./output_images/4.jpg
-[image13]: ./output_images/5.jpg
-[image14]: ./output_images/out_5.jpg
+[image8]: ./output_images/out_0.jpg
+[image9]: ./output_images/out_1.jpg
+[image10]: ./output_images/out_2.jpg
+[image11]: ./output_images/out_3.jpg
+[image12]: ./output_images/out_4.jpg
+[image13]: ./output_images/out_5.jpg
+[image14]: ./output_images/5.jpg
 [video1]: ./project_video_out.avi
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
