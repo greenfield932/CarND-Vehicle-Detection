@@ -85,7 +85,7 @@ window sizes and positions provide more often good predictions.
 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
-![alt text][image4]
+![alt text][image7]
 ---
 
 ### Video Implementation
