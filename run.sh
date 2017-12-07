@@ -1,9 +1,9 @@
 python train.py
 OUT=$?
 if [ $OUT -eq 0 ];then
-    python pipeline.py project_video.mp4 
+#    python pipeline.py project_video.mp4 
 #    python pipeline.py project_video.mp4 project_video_out.avi
-#    python pipeline.py test_video.mp4 test_video_out.avi
+    python pipeline.py test_video.mp4 
 fi
 #python pipeline.py test_video.mp4
 #python pipeline.py project_video.mp4 examples/output_project_video.avi

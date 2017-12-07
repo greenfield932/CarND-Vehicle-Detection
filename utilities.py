@@ -163,7 +163,7 @@ def warp(img, src, dst, size, debug = False):
     return warped, M, Minv
 
 #debug helper, draw named window with adjusted scale
-def showScaled(name, img, scale = None, save = False):
+def showScaled(name, img, scale = None, save = False, optionalFileName = None):
     cv2.namedWindow(name, cv2.WINDOW_NORMAL)
     cv2.imshow(name, img)
     if scale!=None:
@@ -175,6 +175,9 @@ def showScaled(name, img, scale = None, save = False):
         res = img
         if scale!=None:
             res = cv2.resize(img, None, fx = scale, fy = scale, interpolation = cv2.INTER_CUBIC)
+        if optionalFileName!=None:
+            name =optionalFileName
+        print("save image:"+'saved/'+name+'.jpg')
         cv2.imwrite('saved/'+name+'.jpg', res)
 
 #debug helper, draw named window with any size

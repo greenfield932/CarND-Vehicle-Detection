@@ -36,7 +36,7 @@ nonvehicle_features = loadObject(nonVehicleFeaturesFilename)
 X = np.vstack((vehicle_features, nonvehicle_features)).astype(np.float64)
 X_scaler = StandardScaler().fit(X)
 
-imageFiles = findFiles('./test_images/*.jpg')
+imageFiles = findFiles('./saved/*.jpg')
 #f, axarr = plt.subplots(2, 2)
 
 #for i in range(0,1):
@@ -56,7 +56,7 @@ for i in range(0,len(imageFiles)):
     res = np.zeros([totalimg.shape[0], totalimg.shape[1]*2, 3]).astype(np.uint8)
     overlay(res, totalimg, 0,0, 1)
     overlay(res, heatmap, totalimg.shape[1],0, 1)
-    showScaled('result'+str(i),convertColor(res, 'RGB2BGR'), 0.5)
+    showScaled('Out',convertColor(res, 'RGB2BGR'), 1, True, "out_"+os.path.basename(filename[:len(filename)-4]))
 #waitExit()
 #window_img = find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins)
 #plt.imshow(window_img)

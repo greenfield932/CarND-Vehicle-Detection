@@ -83,8 +83,8 @@ videoMode = True
 debug = True
 
 #for debug purposes, we can start from some debugging frame
-frameStart = 700
-
+frameStart = 0
+frameEnd = 1000
 #for debugging purposes, in video mode 'a' simbol is waited to move to next frame
 oneFrame = False
 
@@ -149,12 +149,28 @@ else: #use video for processing
                 heat = np.zeros_like(frame[:,:,0]).astype(np.float)
                 heatmap = np.zeros_like(frame[:,:,0]).astype(np.float)
 
+            
             frame, heat, heatmap = carPipeline(frame, heat, svc, X_scaler,frameboxes,heatmap, debug)
             if debug == True:
                 cv2.putText(frame, 'Frame: '+str(frameCnt), (20,25), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255,255,255), 2, cv2.LINE_AA)
-            showScaled('Output',frame)
+                
+            showScaled('Output',frame,1)
+            
+            #showScaled('Output',frame,1, True, str(frameCnt-frameStart))
+            
+            
+            #if frameEnd==-1:
+            #    showScaled('Output',frame)
+            #else:
+                #showScaled('Output',frame,1, True, str(frameCnt-frameStart))
+            
+            if frameCnt==frameEnd:
+                print("End by frame break")
+                break
+                
             if videoWriter!=None:
                 videoWriter.write(frame)
+            
         else: 
             break
         frameCnt+=1

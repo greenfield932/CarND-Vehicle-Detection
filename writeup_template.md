@@ -17,9 +17,13 @@ The goals / steps of this project are the following:
 [image5]: ./output_images/Boxes2.jpg
 [image6]: ./output_images/Boxes3.jpg
 [image7]: ./output_images/sliding_windows.jpg
-[image8]: ./output_images/bboxes_and_heat.png
-[image9]: ./output_images/labels_map.png
-[image10]: ./output_images/output_bboxes.png
+[image8]: ./output_images/0.jpg
+[image9]: ./output_images/1.jpg
+[image10]: ./output_images/2.jpg
+[image11]: ./output_images/3.jpg
+[image12]: ./output_images/4.jpg
+[image13]: ./output_images/5.jpg
+[image14]: ./output_images/out_5.jpg
 [video1]: ./project_video_out.avi
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -96,21 +100,28 @@ Here's a [https://github.com/greenfield932/CarND-Vehicle-Detection/blob/master/p
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
-I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
+I recorded the positions of positive detections in each frame of the video. From the positive detections I created a heatmap and then thresholded 
+that map to identify vehicle positions. I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  
+I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.
 
-Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
+To make the algorithm more robust I average heatmap over 6 frames and show boxes that appear minimum on 4 frames. Also I show most recent boxes even no cars were detected up
+to 3 frames. It helps to show boxes more stable when a few frames failed to predict cars in a sequence of frames.
+
+Here's an example result showing the heatmap from a series of frames of video, 
+the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
 ### Here are six frames and their corresponding heatmaps:
 
-![alt text][image5]
+![alt text][image8]
+![alt text][image9]
+![alt text][image10]
+![alt text][image11]
+![alt text][image12]
+![alt text][image13]
 
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
-![alt text][image6]
+### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames and resulting bounding boxes are drawn onto the last frame in the series:
+![alt text][image14]
 
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
-![alt text][image7]
-
----
 
 ### Discussion
 
