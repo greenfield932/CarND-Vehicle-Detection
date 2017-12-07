@@ -70,7 +70,7 @@ I reused the code provided by udacity as a base and modified it (`svc_common_uda
 a region of interest. To speedup the performance HOG features are calculated once for the whole region of interest of the image and then divided by overlapping windows.
 Each window used as input for prediction of the classifier.
 To find out scales and positions of the windows I added a code that draws all sliding windows on an input image and highlighted active windows with matched prediction.
-Using multiple scales and start position I obtained 4 sets of sliding windows. My decision based on approach to find far objects by small windows at the top
+Using multiple scales and start position I obtained 4 sets of sliding windows (`svc_tools.py` lines #93-95). My decision based on approach to find far objects by small windows at the top
 of the region of interest and biger windows for near objects. Basically I re-run my pipeline multiple times and checked what window sizes and positions provide more
 often good predictions.
 
