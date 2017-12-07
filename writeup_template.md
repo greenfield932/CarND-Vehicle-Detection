@@ -55,7 +55,7 @@ I also tried different orientations count and pixels per cell. I obtained good r
 
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using python file `train.py`. I obtained a list of vehicle and non-vehicle images (#39-40), then loaded these images into memory and calculated 
+I trained a linear classifier in `train.py`. I obtained a list of vehicle and non-vehicle images (#39-40), then loaded these images into memory and calculated 
 their features #47, #51. Most of code was implemented in `svc_tools.py` and `svc_utils.py` files as separate functions.
 Next I split all features on test and train sets (20% of test and 80% of train) using `train_test_split` function from `sklearn.model_selection`,
 which shuffles the data as well. Then I created linear classifier (`LinearSVC`) and trained it by `svc.fit(X,Y)` call on line #65.
