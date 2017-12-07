@@ -13,6 +13,9 @@ from svc_utils import *
 from svc_common_udacity import *
 from utilities import *
 
+#this function performs feature extraction for all functions in this project
+#this code is targeted for education purposes thus I kept all feature extraction 
+#parameters here instead of translating them through the whole stack of functions
 def getFeatures(image,
                 conv='RGB2YCrCb',
                 orient=11,
@@ -61,7 +64,8 @@ def getFeatures(image,
     # Append the new feature vector to the features list
     return np.concatenate(res)
 
-
+#this function gets a list of filenames, eeads images from disk and returns a extracts features
+#return list of features
 def getFeaturesBatch(filenames, 
                     printProgress = False):
     allfeatures = []
@@ -81,13 +85,14 @@ def getFeaturesBatch(filenames,
                 print("progress: "+str(progress)+"%")
     return allfeatures
 
-import colorsys
-
+#this function performs car search on an image using pretrained svm classifier
+#it returns rectangles coordinates where classifier predicts car and a debug image which has pipeline steps on it
 def findCars(img, svc, scaler):
 
-    ystarts = [405, 420, 380, 400]#, 415, 380]
+    #define windows parameters, region of interst and scale, source image will be resized to that scale prior to window search
+    ystarts = [405, 420, 380, 430]#, 415, 380]
     ystops = [520, 520, 560, 645]#, 645, 645]
-    scales = [1.0, 1.0, 1.0, 1.2]#, 1.6, 2.0]
+    scales = [1.0, 1.0, 1.0, 1.4]#, 1.6, 2.0]
     
     draw_img = img.copy()
     total_boxes = []
@@ -99,7 +104,6 @@ def findCars(img, svc, scaler):
         scale = scales[i]
         draw_img = img.copy()
         boxes, draw_img = find_cars(img, draw_img, colors[i], ystart, ystop, scale, svc, scaler, 11, 16, 2, None, None, total_boxes)
-        #cv2.rectangle(img, (i*5,ystart), (img.shape[1]-i*5, ystop), colors[i],6)
         overlay(totalimg,draw_img,0, 50+i*90, 0.5) 
         #showScaled('Boxes'+str(i), cv2.cvtColor(draw_img,cv2.COLOR_RGB2BGR), 0.3)
         #showScaled('Boxes', cv2.cvtColor(totalimg,cv2.COLOR_RGB2BGR), 1.0)

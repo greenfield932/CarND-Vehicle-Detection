@@ -193,6 +193,11 @@ def showAndExit(img):
         cv2.destroyAllWindows()
     sys.exit(0)
 
+def waitExit():
+    #Exit on esc
+    if cv2.waitKey(0) == 27:
+        cv2.destroyAllWindows()
+    sys.exit(0)
 #debug helper, draw lines on image
 def draw_lines_orig(img, lines, color=[255, 0, 0], thickness=2):
     for line in lines:
