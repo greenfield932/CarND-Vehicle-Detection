@@ -1,4 +1,4 @@
-*Vehicle Detection Project*
+# Vehicle Detection Project
 
 The goals / steps of this project are the following:
 
@@ -33,32 +33,46 @@ You're reading it!
 
 #### 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
+The code for this step is contained in the `svc_tools.py` function `getFeatures` file lines #19-65.
 
 I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
 ![alt text][image1]
 
-I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
+I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  
+I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
-Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
-
+Here is an example using the `YCrCb` color space and HOG parameters of `orientations=11`, `pixels_per_cell=(16, 16)` and `cells_per_block=(2, 2)`:
 
 ![alt text][image2]
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
-I tried various combinations of parameters and...
+My final choice of HOG parameters based on classifier prediction error on a test set and testing multiple configurations for the whole pipeline.
+I tried multiple configurations. Good results were obtained with just RGB space 3 channel HOG. YCrCb space provides less false positives, so I picked this space.
+YUV looks the same as YCrCb. HLS and LUV looks less stable.
+I also tried different orientations count and pixels per cell. I obtained good results with 16 pixels per cell and orentations count 11.
 
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using...
+I trained a linear SVM using python file `train.py`. I obtained a list of vehicle and non-vehicle images (#39-40), then loaded these images into memory and calculated 
+their features #47, #51. Most of code was implemented in `svc_tools.py` and `svc_utils.py` files as separate functions.
+Next I split all features on test and train sets (20% of test and 80% of train) using `train_test_split` function from `sklearn.model_selection`,
+which shuffles the data as well. Then I created linear classifier (`LinearSVC`) and trained it by `svc.fit(X,Y)` call on line #65.
+Line #75 is related to prediction error estimation of the classifier on test set.
+I didn't use color features, they didn't help much.
 
 ### Sliding Window Search
 
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
+I reused the code provided by udacity as a base and modified it (`svc_common_udacity.py` lines #148-#248). The main idea is to slide a square window among
+a region of interest. To speedup the performance HOG features are calculated once for the whole region of interest of the image and then divided by overlapping windows.
+Each window used as input for prediction of the classifier.
+To find out scales and sizes of the window I added a code that draws all sliding windows on an input image and highlighted active windows with matched prediction.
+Using multiple scales and start position I obtained 4 sets of sliding windows. My decision based on approach to find far objects by small windows at the top
+of the region of interest and biger windows for near objects. Basically I re-run my pipeline multiple times and checked what window sizes and positions provide more
+often good predictions.
 
 ![alt text][image3]
 
