@@ -175,7 +175,7 @@ def showScaled(name, img, scale = None, save = False):
         res = img
         if scale!=None:
             res = cv2.resize(img, None, fx = scale, fy = scale, interpolation = cv2.INTER_CUBIC)
-        cv2.imwrite('examples/'+name+'.jpg', res)
+        cv2.imwrite('saved/'+name+'.jpg', res)
 
 #debug helper, draw named window with any size
 def show(name, img, w = None, h = None):

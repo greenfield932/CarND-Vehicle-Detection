@@ -12,11 +12,14 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 [image1]: ./output_images/res_explore1.png
 [image2]: ./output_images/colorspace.png
-[image3]: ./output_images/sliding_windows.jpg
-[image4]: ./output_images/sliding_window.jpg
-[image5]: ./output_images/bboxes_and_heat.png
-[image6]: ./output_images/labels_map.png
-[image7]: ./output_images/output_bboxes.png
+[image3]: ./output_images/Boxes0.jpg
+[image4]: ./output_images/Boxes1.jpg
+[image5]: ./output_images/Boxes2.jpg
+[image6]: ./output_images/Boxes3.jpg
+[image7]: ./output_images/sliding_window.jpg
+[image8]: ./output_images/bboxes_and_heat.png
+[image9]: ./output_images/labels_map.png
+[image10]: ./output_images/output_bboxes.png
 [video1]: ./project_video_out.avi
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -74,6 +77,9 @@ Using multiple scales and start position I obtained 4 sets of sliding windows (`
 window sizes and positions provide more often good predictions.
 
 ![alt text][image3]
+![alt text][image4]
+![alt text][image5]
+![alt text][image6]
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 

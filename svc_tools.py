@@ -105,7 +105,7 @@ def findCars(img, svc, scaler):
         draw_img = img.copy()
         boxes, draw_img = find_cars(img, draw_img, colors[i], ystart, ystop, scale, svc, scaler, 11, 16, 2, None, None, total_boxes)
         overlay(totalimg,draw_img,0, 50+i*90, 0.5) 
-        #showScaled('Boxes'+str(i), cv2.cvtColor(draw_img,cv2.COLOR_RGB2BGR), 0.3)
+        showScaled('Boxes'+str(i), cv2.cvtColor(draw_img,cv2.COLOR_RGB2BGR), 1, True)
         #showScaled('Boxes', cv2.cvtColor(totalimg,cv2.COLOR_RGB2BGR), 1.0)
         #showScaled('Boxes', totalimg, 0.5)
 
