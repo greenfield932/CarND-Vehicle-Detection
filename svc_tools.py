@@ -87,7 +87,7 @@ def findCars(img, svc, scaler):
 
     ystarts = [405, 420, 380, 400]#, 415, 380]
     ystops = [520, 520, 560, 645]#, 645, 645]
-    scales = [1.0, 1.0, 1.0, 1.5]#, 1.6, 2.0]
+    scales = [1.0, 1.0, 1.0, 1.2]#, 1.6, 2.0]
     
     draw_img = img.copy()
     total_boxes = []

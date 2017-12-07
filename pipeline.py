@@ -98,7 +98,7 @@ videoMode = True
 debug = True
 
 #for debug purposes, we can start from some debugging frame
-frameStart = 200
+frameStart = 0
 
 #for debugging purposes, in video mode 'a' simbol is waited to move to next frame
 oneFrame = False
