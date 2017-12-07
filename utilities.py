@@ -30,6 +30,12 @@ def transparentOverlay(src , overlay , pos=(0,0),scale = 1):
             src[x+i][y+j] = alpha*overlay[i][j][:3]+(1-alpha)*src[x+i][y+j]
     return src
 
+def overlay(img, overlayImg, posx, posy, scale=1):
+    overlayImgTmp = overlayImg.copy()
+    if scale !=1:
+        overlayImgTmp = cv2.resize(overlayImgTmp, (int(overlayImgTmp.shape[1]*scale), int(overlayImgTmp.shape[0]*scale)))
+    img[posy:posy+overlayImgTmp.shape[0], posx:posx+overlayImgTmp.shape[1],:] = overlayImgTmp[:,:,:]
+    
 #debug function to get one frame from video file
 def getFrame(filename, frameStart):
     cap = cv2.VideoCapture(filename)

@@ -1,6 +1,11 @@
-python pipeline.py test_video.mp4
+python train.py
+OUT=$?
+if [ $OUT -eq 0 ];then
+    python pipeline.py project_video.mp4
+fi
+#python pipeline.py test_video.mp4
 #python pipeline.py project_video.mp4 examples/output_project_video.avi
-#python pipeline.py project_video.mp4
+#python pipeline.py project_video.mp4 
 #python pipeline.py challenge_video.mp4
 #python pipeline.py challenge_video.mp4 out_challenge_video.avi
 
